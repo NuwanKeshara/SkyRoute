@@ -14,13 +14,14 @@ logging.basicConfig(
     ]
 )
 
-
+# Load environment variables from .env file
 load_status = load_dotenv(".env")
 if load_status is False:
     logging.error('Environment variables not loaded.')
     raise RuntimeError('Environment variables not loaded.')
 
 try:
+    # Load required environment variables
     NEO4J_URI = os.getenv("NEO4J_URI")
     NEO4J_USER = os.getenv("NEO4J_USER")
     NEO4J_PASSWORD = os.getenv("NEO4J_PASSWORD")
