@@ -1,0 +1,574 @@
+{
+  "uuid": "7a76dea7-3a20-42d2-9c96-66224b318908",
+  "title": "New dashboard",
+  "version": "2.4",
+  "settings": {
+    "pagenumber": 0,
+    "editable": true,
+    "fullscreenEnabled": false,
+    "parameters": {
+      "undefined": "",
+      "undefined_display": "",
+      "neodash_airport_country": "United States",
+      "neodash_airport_country_display": "United States"
+    },
+    "theme": "light"
+  },
+  "pages": [
+    {
+      "title": "Domestic Flights Overview",
+      "reports": [
+        {
+          "id": "e051d083-05f3-4a60-8d00-d55956673b58",
+          "title": "Country",
+          "query": "MATCH (n:`Airport`) \nWHERE toLower(toString(n.`country`)) CONTAINS toLower($input) \nRETURN DISTINCT n.`country` as value,  n.`country` as display ORDER BY size(toString(value)) ASC LIMIT 10",
+          "width": 7,
+          "height": 2,
+          "x": 0,
+          "y": 0,
+          "type": "select",
+          "selection": {},
+          "settings": {
+            "actionsRules": [
+              {
+                "condition": "Click",
+                "field": "country",
+                "value": "",
+                "customization": "set variable",
+                "customizationValue": "country_name"
+              }
+            ],
+            "type": "Node Property",
+            "entityType": "Airport",
+            "propertyType": "country",
+            "propertyTypeDisplay": "country",
+            "parameterName": "neodash_airport_country",
+            "backgroundColor": "#FFFFFF",
+            "description": "select the country",
+            "suggestionLimit": 10,
+            "defaultValue": "United States"
+          },
+          "schema": []
+        },
+        {
+          "id": "8f2f9476-bb2a-4ffe-8780-c0baa408f864",
+          "title": "Total Flights",
+          "query": "MATCH (a1:Airport)-[r:ROUTE]->(a2:Airport) \nWHERE a1.country = $neodash_airport_country AND a2.country = $neodash_airport_country \nRETURN count(r) AS TotalFlights\n\n\n",
+          "width": 7,
+          "height": 2,
+          "x": 0,
+          "y": 6,
+          "type": "value",
+          "selection": {},
+          "settings": {
+            "fontSize": 128
+          },
+          "schema": []
+        },
+        {
+          "id": "1bf44788-1da9-49bc-b33a-615d63bb1420",
+          "title": "Total Airports",
+          "query": "MATCH (a:Airport) \nWHERE a.country = $neodash_airport_country \nRETURN count(DISTINCT a) AS TotalAirports\n",
+          "width": 7,
+          "height": 2,
+          "x": 0,
+          "y": 2,
+          "type": "value",
+          "selection": {},
+          "settings": {
+            "fontSize": 128
+          },
+          "schema": []
+        },
+        {
+          "id": "4d27a2b6-c971-492c-8cb8-335bbe8a5c34",
+          "title": "Flight Network by City",
+          "query": "MATCH (a1:Airport)-[r:ROUTE]-(a2:Airport) \nWHERE a1.country = $neodash_airport_country AND a2.country = $neodash_airport_country \nRETURN a1, r, a2 LIMIT 200\n\n",
+          "width": 15,
+          "height": 8,
+          "x": 7,
+          "y": 0,
+          "type": "graph",
+          "selection": {
+            "Airport": "city",
+            "ROUTE": "(label)"
+          },
+          "settings": {
+            "frozen": true,
+            "nodePositions": {
+              "2617": [
+                3.5161105847071794,
+                -4.192717143240627
+              ],
+              "2618": [
+                -20.21205224145907,
+                8.84909199499759
+              ],
+              "2619": [
+                7.479873644015696,
+                -18.39641170747143
+              ],
+              "2620": [
+                5.65923439944766,
+                12.739408227006994
+              ],
+              "2622": [
+                -12.322043506065967,
+                -1.460250047907421
+              ],
+              "2624": [
+                20.884499278653806,
+                -5.834124402033591
+              ],
+              "2630": [
+                1.0303365488056508,
+                22.293033761243418
+              ],
+              "2632": [
+                -6.380941620544799,
+                -25.9999847062774
+              ],
+              "2633": [
+                35.30984590139566,
+                9.170055039442895
+              ],
+              "2640": [
+                -33.67603040992921,
+                4.328210350362987
+              ],
+              "2645": [
+                12.884742408209373,
+                -24.40106651614406
+              ],
+              "2648": [
+                9.779575975610081,
+                26.583847570707725
+              ],
+              "2649": [
+                -30.558256460227515,
+                -10.296710626753272
+              ],
+              "2650": [
+                30.470739525538413,
+                -11.693537778927627
+              ],
+              "2651": [
+                -18.888054269186473,
+                26.361495665728295
+              ],
+              "2658": [
+                -3.9472892638189316,
+                -37.62730241430805
+              ],
+              "2660": [
+                23.505289880991192,
+                31.36383939913849
+              ],
+              "2664": [
+                -47.06205570083699,
+                3.986931281205087
+              ],
+              "2671": [
+                17.094937106485244,
+                -14.208064924500068
+              ],
+              "2686": [
+                -2.2822649925067258,
+                47.88677797763037
+              ],
+              "2688": [
+                -25.788724655579006,
+                -32.65420894073554
+              ],
+              "2690": [
+                47.53640338087816,
+                10.453455812031486
+              ],
+              "2695": [
+                -52.47858214345622,
+                30.14899763293422
+              ],
+              "2714": [
+                4.138396962384461,
+                -35.35445412655265
+              ],
+              "2716": [
+                20.010798037672927,
+                46.88352760103713
+              ],
+              "2719": [
+                -49.507049996963005,
+                -8.010732738468391
+              ],
+              "2723": [
+                30.433188486121804,
+                -7.652560803651918
+              ],
+              "2727": [
+                -24.12566926286262,
+                61.19842843088926
+              ],
+              "2731": [
+                -17.150431363534878,
+                -45.78617814635179
+              ],
+              "2733": [
+                35.36597991692728,
+                29.27484302835545
+              ],
+              "2739": [
+                -58.94322990173237,
+                17.222514139889892
+              ],
+              "2747": [
+                17.197033219368517,
+                -28.430915754329195
+              ],
+              "2761": [
+                7.14714860915611,
+                60.66279058730865
+              ],
+              "2765": [
+                -44.86625282988613,
+                -23.17298543261115
+              ],
+              "2766": [
+                62.73046191483664,
+                -7.373752388366355
+              ],
+              "2771": [
+                -47.713433353612025,
+                50.769809936202336
+              ],
+              "2772": [
+                -6.52451198744508,
+                -39.72049921391779
+              ],
+              "2777": [
+                31.06670464081526,
+                46.13702079014574
+              ],
+              "2780": [
+                -54.313060238943194,
+                -7.178833225235692
+              ],
+              "2802": [
+                32.76062970235683,
+                -21.514458242332513
+              ],
+              "2807": [
+                -14.052580028719834,
+                67.60832245923989
+              ],
+              "2813": [
+                -33.731997008352714,
+                -55.7350288141915
+              ],
+              "2815": [
+                45.61209626297642,
+                21.95144221984247
+              ],
+              "2819": [
+                -54.25360512508297,
+                25.498530859103532
+              ],
+              "2837": [
+                22.81869427549791,
+                -58.086113741151536
+              ],
+              "2838": [
+                27.28180595730328,
+                58.93904845620446
+              ],
+              "2860": [
+                -66.45486173238481,
+                -28.175750125621757
+              ],
+              "2863": [
+                45.969475762685825,
+                -7.835060656470622
+              ],
+              "2868": [
+                -37.50829575991024,
+                62.80784172349527
+              ],
+              "2872": [
+                -16.412923512438674,
+                -67.49971802874904
+              ],
+              "2880": [
+                57.064799507135355,
+                39.11379495004962
+              ],
+              "2883": [
+                -74.44679555927306,
+                10.042393242245932
+              ],
+              "2887": [
+                31.0918968008287,
+                -35.551756589229655
+              ],
+              "2891": [
+                -0.2743809565253539,
+                71.47105463782692
+              ],
+              "2900": [
+                -46.71308834018171,
+                -35.96087083960676
+              ],
+              "2902": [
+                54.11988424139459,
+                9.907331388596898
+              ],
+              "2905": [
+                -56.366930149267375,
+                48.22668086153537
+              ],
+              "2908": [
+                2.7963227163755224,
+                -51.298935155963946
+              ],
+              "2910": [
+                32.790203532584684,
+                58.358858001504075
+              ],
+              "2916": [
+                -71.8888246468059,
+                -14.91625679472212
+              ],
+              "2919": [
+                47.48297854389191,
+                -23.015314982991285
+              ],
+              "2933": [
+                -24.34416229025156,
+                71.18628379177228
+              ],
+              "2935": [
+                -28.605547083243227,
+                -65.54855811079331
+              ],
+              "2936": [
+                54.826058973538906,
+                31.330540430450775
+              ],
+              "2939": [
+                -68.43563829371432,
+                27.546359572847823
+              ],
+              "2940": [
+                25.49529963135265,
+                -48.53628199189321
+              ],
+              "2947": [
+                13.909173791087447,
+                71.76520113809568
+              ],
+              "2957": [
+                -58.74697507613534,
+                -30.468343428539672
+              ],
+              "2960": [
+                83.18922938786444,
+                -13.779075021361686
+              ],
+              "2978": [
+                -44.92327287258782,
+                60.299378156675886
+              ],
+              "2982": [
+                -9.540666047230813,
+                -58.53906152632717
+              ],
+              "3017": [
+                62.06996964274272,
+                55.81921803889204
+              ],
+              "3041": [
+                -73.85642050955768,
+                -7.003446414133153
+              ],
+              "3059": [
+                64.92758709837295,
+                -56.737337607773675
+              ],
+              "3060": [
+                -4.9658574125789965,
+                70.3247006731605
+              ],
+              "3061": [
+                -39.488907646985695,
+                -64.91577944140856
+              ],
+              "3308": [
+                80.6985434048861,
+                10.225096072877303
+              ],
+              "4431": [
+                -64.03444697252077,
+                36.517199944398975
+              ],
+              "4433": [
+                19.68849055538352,
+                -78.91436337225664
+              ],
+              "4528": [
+                35.64585002574047,
+                71.90727475036985
+              ],
+              "4594": [
+                -66.43747375636697,
+                -31.069644857664397
+              ],
+              "4612": [
+                78.54745801094857,
+                -34.553207931133294
+              ],
+              "4678": [
+                -30.63116636570897,
+                72.4735733130876
+              ]
+            }
+          },
+          "schema": [
+            [
+              "Airport",
+              "country",
+              "iata",
+              "city",
+              "latitude",
+              "name",
+              "location",
+              "longitude"
+            ],
+            [
+              "ROUTE",
+              "airline",
+              "updated"
+            ]
+          ]
+        },
+        {
+          "id": "672eee1e-d2ca-4ef4-92c0-508afc176012",
+          "title": "Top 10 Airports by Flights (Departures)",
+          "query": "MATCH (a1:Airport)-[r:ROUTE]->(a2:Airport) \nWHERE a1.country = $neodash_airport_country AND a2.country = $neodash_airport_country \nRETURN a1.name AS Airport, count(r) AS OutgoingFlights \nORDER BY OutgoingFlights DESC LIMIT 10\n\n",
+          "width": 11,
+          "height": 5,
+          "x": 0,
+          "y": 8,
+          "type": "bar",
+          "selection": {
+            "index": "Airport",
+            "value": "OutgoingFlights",
+            "key": "Airport"
+          },
+          "settings": {
+            "legend": true,
+            "colors": "set2",
+            "customDimensions": false,
+            "barWidth": 15,
+            "displayYAxis": true,
+            "showOptionalSelections": true,
+            "valueScale": "linear",
+            "groupMode": "stacked",
+            "hideSelections": true,
+            "expandHeightForLegend": false,
+            "layout": "vertical",
+            "marginRight": 120,
+            "legendPosition": "Vertical"
+          },
+          "schema": []
+        },
+        {
+          "id": "f5ada767-0994-43f0-b024-c965c925ab9e",
+          "title": "Top 10 Airports by Flights (Arrivals)",
+          "query": "MATCH (a1:Airport)-[r:ROUTE]->(a2:Airport)\nWHERE a1.country = $neodash_airport_country \n  AND a2.country = $neodash_airport_country\nWITH a2.name AS Airline, count(r) AS FlightCount\nORDER BY FlightCount DESC\nWITH collect({airline: Airline, flights: FlightCount}) AS data\nUNWIND data AS d\nWITH d, \n     CASE \n       WHEN d IN data[0..7] THEN d.airline\n       ELSE 'Other'\n     END AS AirlineGroup,\n     d.flights AS FlightCount\nRETURN AirlineGroup AS Airline, sum(FlightCount) AS FlightCount\nORDER BY FlightCount DESC;\n",
+          "width": 11,
+          "height": 5,
+          "x": 11,
+          "y": 8,
+          "type": "pie",
+          "selection": {
+            "index": "Airline",
+            "value": "FlightCount",
+            "key": "(none)"
+          },
+          "settings": {
+            "legend": false,
+            "enableArcLabels": true,
+            "enableArcLinkLabels": true,
+            "sortByValue": true,
+            "arcLabelsSkipAngle": 12,
+            "arcLinkLabelsSkipAngle": 10,
+            "ignoreNonDefinedParams": false
+          },
+          "schema": []
+        },
+        {
+          "id": "2846fc7d-1ba9-4606-88fd-80ac88f4536d",
+          "title": "Top 10 Busiest Airports",
+          "query": "MATCH (a1:Airport)-[r:ROUTE]-(a2:Airport) \nWHERE a1.country = $neodash_airport_country and a2.country = $neodash_airport_country\nRETURN a1.name + ' (' + a1.iata + ')' AS Airport_Name,\na1.city AS City,\ncount(r) AS Connected_Routes \nORDER BY Connected_Routes DESC LIMIT 10\n\n\n\n",
+          "width": 11,
+          "height": 5,
+          "x": 11,
+          "y": 13,
+          "type": "table",
+          "selection": {},
+          "settings": {
+            "compact": true
+          }
+        },
+        {
+          "id": "2d0f6808-9e94-4b08-b638-57aa5de907e6",
+          "title": "Top10 Airlines by Route Count",
+          "query": "MATCH (ap1:Airport)-[r:ROUTE]-(ap2:Airport) \nWHERE ap1.country = 'United States' OR ap2.country = 'United States' \nWITH r.airline AS airlineIata, count(r) AS routeCount \nMATCH (a:Airline) \nWHERE a.iata = airlineIata \nRETURN a.name AS Airline, routeCount \nORDER BY routeCount DESC LIMIT 10\n\n\n\n",
+          "width": 11,
+          "height": 5,
+          "x": 0,
+          "y": 13,
+          "type": "table",
+          "selection": {},
+          "settings": {
+            "wrapContent": false,
+            "columnWidthsType": "Relative (%)",
+            "legend": true,
+            "colors": "accent",
+            "hideSelections": true
+          },
+          "schema": []
+        },
+        {
+          "id": "4bd215c7-2434-4c00-8ac5-bf6e4579dfc1",
+          "title": "Total Airlines",
+          "query": "MATCH (ap1:Airport)-[r:ROUTE]-(ap2:Airport) \nWHERE ap1.country = $neodash_airport_country OR ap2.country =  $neodash_airport_country \nRETURN count(DISTINCT r.airline) AS TotalAirlinesInUS\n",
+          "width": 7,
+          "height": 2,
+          "x": 0,
+          "y": 4,
+          "type": "value",
+          "selection": {},
+          "settings": {
+            "fontSize": 128
+          },
+          "schema": []
+        }
+      ]
+    },
+    {
+      "title": "International Flights Overview",
+      "reports": []
+    },
+    {
+      "title": "New page",
+      "reports": []
+    }
+  ],
+  "parameters": {},
+  "extensions": {
+    "active": true,
+    "activeReducers": [],
+    "actions": {
+      "active": true
+    }
+  }
+}
