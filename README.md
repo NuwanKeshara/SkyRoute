@@ -10,4 +10,16 @@ A graph-based model of global flight routes built with the Neo4j graph database.
 - Dat Ingestion: Python, Pandas
 
 
-### in alpha stage...
+## Report
+![alt text](https://github.com/NuwanKeshara/SkyRoute/blob/main/docs/images/page1.png?raw=true)
+![alt text](https://github.com/NuwanKeshara/SkyRoute/blob/main/docs/images/page2.png?raw=true)
+![alt text](https://github.com/NuwanKeshara/SkyRoute/blob/main/docs/images/page3.png?raw=true)
+![alt text](https://github.com/NuwanKeshara/SkyRoute/blob/main/docs/images/page4.png?raw=true)
+![alt text](https://github.com/NuwanKeshara/SkyRoute/blob/main/docs/images/page5.png?raw=true)
+![alt text](https://github.com/NuwanKeshara/SkyRoute/blob/main/docs/images/page6.png?raw=true)
+![alt text](https://github.com/NuwanKeshara/SkyRoute/blob/main/docs/images/page7.png?raw=true)
+![alt text](https://github.com/NuwanKeshara/SkyRoute/blob/main/docs/images/page8.png?raw=true)
+![alt text](https://github.com/NuwanKeshara/SkyRoute/blob/main/docs/images/page9.png?raw=true)
+![alt text](https://github.com/NuwanKeshara/SkyRoute/blob/main/docs/images/page10.png?raw=true)
+![alt text](https://github.com/NuwanKeshara/SkyRoute/blob/main/docs/images/page11.png?raw=true)
+
