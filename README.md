@@ -1,5 +1,5 @@
 # SkyRoute
-A graph-based model of global flight routes built with the Neo4j graph database. It maps airports as nodes and routes as relationships, enabling domestic airlines network view, international airlines network view an shortest path finding with interactive spatial visualization using NeoDash.
+A graph-based model of global flight routes built with the Neo4j graph database. It maps airports as nodes and routes as relationships, enabling domestic airlines network view, international airlines network view and shortest path finding with interactive spatial visualization using NeoDash.
 
 
 ## Tech Stack
